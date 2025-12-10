@@ -20,6 +20,7 @@ void processInput(GLFWwindow *window)
 
 
 // vertex data 
+
 float vertices[] = {
 	-0.5f, -0.5f, 0.0f,
 	0.5f, -0.5f, 0.0f,
@@ -39,9 +40,34 @@ glBindBuffer(GL_ARRAY_BUFFER, VBO);
 glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
 // setting the layout for the vertex shader
-layout (location = 0) in vec3 aPos;
+
+const char *vertexShaderSource = "#version 330 core\n"
+    "layout (location = 0) in vec3 aPos;\n"
+    "void main()\n"
+    "{\n"
+    "   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
+    "}\0";
+
+// creating the fragment layout 
+
+out vec4 FragColor;
 
 int main (){
+
+	// creating the vertex shader 
+	unsigned int vertexShader;
+	vertexShader = glCreateShader(GL_VERTEX_SHADER);
+
+
+	//fragment shader object for them color 
+	
+	FragColor = vec4(0.0f,0.0f,0.0f,0.0f); // i think this is white 
+
+
+	// creating fragment shader
+	unsigned int fragmentShader;
+	fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
+
 
 	//initialize glfw
 
@@ -96,7 +122,38 @@ int main (){
 	}
 
 
+	
+	// shader source object and compiling the shader 
+	
+	glShaderSource(vertexShader, 1, vertexShaderSource, NULL);
+	glCompileShader(vertexShader);
+
+	// checking for compilation errors 
+	int success;
+	char infoLog[512];
+	glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &success);
+
+	if (!success){
+		glGetShaderInfoLog(vertexShader, 512 , NULL, infoLog);
+		cout << "error : " << infoLog << endl;
+	}
+	
+
+	// compiling the fragment shader source
+	glShaderSource(fragmentShader, 1 , &fragmentShaderSource, NULL);
+	glCompileShader(fragmentShader);
+
+	
+	// checking for compilation errors 
+	glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &success);
+
+	char infoLog2[512];
+	if (!success){
+		glGetShaderInfoLog(vertexShader, 512 , NULL , infoLog2);
+		cout << "error : " << infoLog2<< endl;
+	}
 	// window termination
 	glfwTerminate();
 	return 0;
+
 }
