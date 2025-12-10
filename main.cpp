@@ -1,6 +1,8 @@
 #include <iostream>
+#include <vector>
 #include <GLFW/glfw3.h>
-#include <vectors>
+#version 330 core
+
 
 using namespace std;
 
@@ -16,15 +18,37 @@ void processInput(GLFWwindow *window)
         glfwSetWindowShouldClose(window, true);
 }
 
+
+// vertex data 
+float vertices[] = {
+	-0.5f, -0.5f, 0.0f,
+	0.5f, -0.5f, 0.0f,
+	0.0f,  0.5f, 0.0f
+};
+	
+
+// creating a vbo 
+
+unsigned int VBO;
+glGenBuffer(1, &VBO); // generating a VBO using the function in the library
+
+// binding different types of buffers in the glBuffer that we created 
+glBindBuffer(GL_ARRAY_BUFFER, VBO);
+// -> current buffer is VBO here 
+
+glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+
+// setting the layout for the vertex shader
+layout (location = 0) in vec3 aPos;
+
 int main (){
 
 	//initialize glfw
-	
+
 	glfwInit();
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-
 
 	//creating a window 
 	
@@ -55,6 +79,7 @@ int main (){
 	// starting a window
 	
 	glfwMakeContextCurrent(window);
+
 
 	// creating a loop window
 	
