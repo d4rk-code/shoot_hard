@@ -57,7 +57,7 @@ int main (){
 	// creating the vertex shader 
 	unsigned int vertexShader;
 	vertexShader = glCreateShader(GL_VERTEX_SHADER);
-
+	
 
 	//fragment shader object for them color 
 	
@@ -68,6 +68,13 @@ int main (){
 	unsigned int fragmentShader;
 	fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
 
+	// creating the shader program
+	unsigned int shaderProgram;
+	shaderProgram = glCreateProgram();
+
+	glAttachShader(shaderProgram, vertexShader);
+	glAttachShader(shaderProgram, fragmentShader);
+	glLinkProgram(shaderProgram);
 
 	//initialize glfw
 
@@ -106,22 +113,6 @@ int main (){
 	
 	glfwMakeContextCurrent(window);
 
-
-	// creating a loop window
-	
-	while(!glfwWindowShouldClose(window)){
-
-		// input
-		processInput(window);
-	
-		// rendering 
-
-		// poll events
-		glfwSwapBuffers(window);
-		glfwPollEvents();
-	}
-
-
 	
 	// shader source object and compiling the shader 
 	
@@ -152,6 +143,33 @@ int main (){
 		glGetShaderInfoLog(vertexShader, 512 , NULL , infoLog2);
 		cout << "error : " << infoLog2<< endl;
 	}
+
+	// creating the vertex attribute pointer 
+	glVertexAttribPointer(0,3, GL_FLOAT ,GL_FALSE ,3 * sizeof(float) , (void*)0);
+	glEnableVertextAttribArray(0);
+
+
+
+	// creating a loop window
+	
+	while(!glfwWindowShouldClose(window)){
+
+		// input
+		processInput(window);
+	
+		// rendering 
+
+		// poll events
+		glfwSwapBuffers(window);
+		glfwPollEvents();
+	}
+
+
+
+	//unlinking the shaders from the shader program
+	glDeleteShader(vertexShader);
+	glDeleteShader(fragmentShader); 
+
 	// window termination
 	glfwTerminate();
 	return 0;
