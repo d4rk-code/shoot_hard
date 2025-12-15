@@ -1,7 +1,6 @@
-#include <iostream>
-#include <vector>
+#include <glad/glad.h>
 #include <GLFW/glfw3.h>
-
+#include <iostream>
 
 using namespace std;
 
@@ -33,7 +32,7 @@ const char *fragmentShaderSource = "#version 330 core\n"
     "out vec4 FragColor;\n"
     "void main()\n"
     "{\n"
-    "   FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
+    "   FragColor = vec4(1.0f, 1.0f, 1.0f, 1.0f);\n"
     "}\n\0";
 
 int main (){
@@ -57,53 +56,33 @@ int main (){
 		return -1;
 	}
 
-	// glad initialization so that the function pointers are matching with the proc address i.e. working for different systems 
-/*
-	gladLoadGL();
-
-	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)){
-		cout << "Glad messed up!" << endl;
-		return -1;
-	}
-*/
-	// glviewport -> for dimensioning of the window
-	glViewport(0,0,800,800); // glViewport(lower_left_x , lower_left_y , width , height)
-	
-	// callback for random resizing
-	glfwSetFramebufferSizeCallback(window, callback_size);
 	
 	// starting a window
 	
 	glfwMakeContextCurrent(window);
 
+	// glad initialization so that the function pointers are matching with the proc address i.e. working for different systems 
+
+	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)){
+		cout << "Glad messed up!" << endl;
+		return -1;
+	}
+	// glviewport -> for dimensioning of the window
+	glViewport(0,0,800,800); // glViewport(lower_left_x , lower_left_y , width , height)
+	
+	// callback for random resizing
+	glfwSetFramebufferSizeCallback(window, callback_size);
+
+	// creating a compiling the shader programs
+
+
 	// creating the vertex shader 
 	unsigned int vertexShader;
 	vertexShader = glCreateShader(GL_VERTEX_SHADER);
-	
-
-	//fragment shader object for them color 
-	
-	FragColor = vec4(0.0f,0.0f,0.0f,0.0f); // i think this is white 
-
-
-	// creating fragment shader
-	unsigned int fragmentShader;
-	fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-
-	// creating the shader program and linking the shader objects
-	unsigned int shaderProgram;
-	shaderProgram = glCreateProgram();
-
-	glAttachShader(shaderProgram, vertexShader);
-	glAttachShader(shaderProgram, fragmentShader);
-	glLinkProgram(shaderProgram);
-
-
-	// shader source object and compiling the shader 
-	
-	glShaderSource(vertexShader, 1, vertexShaderSource, NULL);
+	const char* vertexSources[] = { vertexShaderSource };
+	glShaderSource(vertexShader, 1, vertexSources, NULL);
 	glCompileShader(vertexShader);
-
+	
 	// checking for compilation errors 
 	int success;
 	char infoLog[512];
@@ -113,21 +92,47 @@ int main (){
 		glGetShaderInfoLog(vertexShader, 512 , NULL, infoLog);
 		cout << "error : " << infoLog << endl;
 	}
-	
+
+	// creating fragment shader
+	unsigned int fragmentShader;
+	fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
 
 	// compiling the fragment shader source
-	glShaderSource(fragmentShader, 1 , &fragmentShaderSource, NULL);
-	glCompileShader(fragmentShader);
+	const char* fragmentSources[] = { fragmentShaderSource };
+	glShaderSource(fragmentShader, 1, fragmentSources, NULL);
 
+	glCompileShader(fragmentShader);
 	
 	// checking for compilation errors 
 	glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &success);
 
 	char infoLog2[512];
 	if (!success){
-		glGetShaderInfoLog(vertexShader, 512 , NULL , infoLog2);
+		glGetShaderInfoLog(fragmentShader, 512 , NULL , infoLog2);
 		cout << "error : " << infoLog2<< endl;
 	}
+	
+
+	// creating the shader program and linking the shader objects
+	unsigned int shaderProgram;
+	shaderProgram = glCreateProgram();
+
+	glAttachShader(shaderProgram, vertexShader);
+	glAttachShader(shaderProgram, fragmentShader);
+	glLinkProgram(shaderProgram);
+	glGetProgramiv(shaderProgram, GL_LINK_STATUS, &success);
+
+	char infoLog3[512];
+	if (!success){
+		glGetProgramInfoLog(shaderProgram, 512 , NULL , infoLog3);
+		cout << "error in linking" << endl;
+	}
+
+
+	glDeleteShader(vertexShader);
+	glDeleteShader(fragmentShader);
+	
+
 	// vertex data 
 
 	float vertices[] = {
@@ -136,10 +141,14 @@ int main (){
 		0.0f,  0.5f, 0.0f
 	};
 
-	// creating a vbo 
+	// creating a VBO and a VAO
 
-	unsigned int VBO;
-	glGenBuffer(1, &VBO); // generating a VBO using the function in the library
+	unsigned int VBO, VAO;
+	glGenBuffers(1, &VBO); // generating a VBO using the function in the library
+	glGenVertexArrays(1, &VAO); 
+
+	// bind the Vertex Array Object first, then bind and set vertex buffer(s), and then configure vertex attributes(s).
+	glBindVertexArray(VAO);
 
 	// binding different types of buffers in the glBuffer that we created 
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
@@ -150,7 +159,18 @@ int main (){
 
 	// creating the vertex attribute pointer 
 	glVertexAttribPointer(0,3, GL_FLOAT ,GL_FALSE ,3 * sizeof(float) , (void*)0);
-	glEnableVertextAttribArray(0);
+	glEnableVertexAttribArray(0);
+
+
+	    // note that this is allowed, the call to glVertexAttribPointer registered VBO as the vertex attribute's bound vertex buffer object so afterwards we can safely unbind
+    glBindBuffer(GL_ARRAY_BUFFER, 0); 
+
+    // You can unbind the VAO afterwards so other VAO calls won't accidentally modify this VAO, but this rarely happens. Modifying other
+    // VAOs requires a call to glBindVertexArray anyways so we generally don't unbind VAOs (nor VBOs) when it's not directly necessary.
+    glBindVertexArray(0); 
+
+
+
 
 	// creating a loop window
 	
@@ -160,17 +180,26 @@ int main (){
 		processInput(window);
 	
 		// rendering 
+		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT);
+
+		// drawing my triangle finally 
+		glUseProgram(shaderProgram);
+		glBindVertexArray(VAO);
+		glDrawArrays(GL_TRIANGLES, 0 , 3);
+
 
 		// poll events
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
 
+	// optional: de-allocate all resources once they've outlived their purpose:
+	// ------------------------------------------------------------------------
+	glDeleteVertexArrays(1, &VAO);
+	glDeleteBuffers(1, &VBO);
+	glDeleteProgram(shaderProgram);
 
-
-	//unlinking the shaders from the shader program
-	glDeleteShader(vertexShader);
-	glDeleteShader(fragmentShader); 
 
 	// window termination
 	glfwTerminate();
