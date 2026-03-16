@@ -153,29 +153,29 @@ src/glad.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/glad.c.s
 .PHONY : src/glad.c.s
 
-src/main.o: src/main.cpp.o
-.PHONY : src/main.o
+src/new.o: src/new.cpp.o
+.PHONY : src/new.o
 
 # target to build an object file
-src/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/main.cpp.o
-.PHONY : src/main.cpp.o
+src/new.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/new.cpp.o
+.PHONY : src/new.cpp.o
 
-src/main.i: src/main.cpp.i
-.PHONY : src/main.i
+src/new.i: src/new.cpp.i
+.PHONY : src/new.i
 
 # target to preprocess a source file
-src/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/main.cpp.i
-.PHONY : src/main.cpp.i
+src/new.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/new.cpp.i
+.PHONY : src/new.cpp.i
 
-src/main.s: src/main.cpp.s
-.PHONY : src/main.s
+src/new.s: src/new.cpp.s
+.PHONY : src/new.s
 
 # target to generate assembly for a file
-src/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/main.cpp.s
-.PHONY : src/main.cpp.s
+src/new.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/new.cpp.s
+.PHONY : src/new.cpp.s
 
 # Help Target
 help:
@@ -189,9 +189,9 @@ help:
 	@echo "... src/glad.o"
 	@echo "... src/glad.i"
 	@echo "... src/glad.s"
-	@echo "... src/main.o"
-	@echo "... src/main.i"
-	@echo "... src/main.s"
+	@echo "... src/new.o"
+	@echo "... src/new.i"
+	@echo "... src/new.s"
 .PHONY : help
 
 
