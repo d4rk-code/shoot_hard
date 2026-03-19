@@ -129,6 +129,30 @@ app/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/build
 .PHONY : app/fast
 
+src/element.o: src/element.cpp.o
+.PHONY : src/element.o
+
+# target to build an object file
+src/element.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/element.cpp.o
+.PHONY : src/element.cpp.o
+
+src/element.i: src/element.cpp.i
+.PHONY : src/element.i
+
+# target to preprocess a source file
+src/element.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/element.cpp.i
+.PHONY : src/element.cpp.i
+
+src/element.s: src/element.cpp.s
+.PHONY : src/element.s
+
+# target to generate assembly for a file
+src/element.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/element.cpp.s
+.PHONY : src/element.cpp.s
+
 src/glad.o: src/glad.c.o
 .PHONY : src/glad.o
 
@@ -153,30 +177,6 @@ src/glad.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/glad.c.s
 .PHONY : src/glad.c.s
 
-src/new.o: src/new.cpp.o
-.PHONY : src/new.o
-
-# target to build an object file
-src/new.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/new.cpp.o
-.PHONY : src/new.cpp.o
-
-src/new.i: src/new.cpp.i
-.PHONY : src/new.i
-
-# target to preprocess a source file
-src/new.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/new.cpp.i
-.PHONY : src/new.cpp.i
-
-src/new.s: src/new.cpp.s
-.PHONY : src/new.s
-
-# target to generate assembly for a file
-src/new.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/new.cpp.s
-.PHONY : src/new.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -186,12 +186,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... app"
+	@echo "... src/element.o"
+	@echo "... src/element.i"
+	@echo "... src/element.s"
 	@echo "... src/glad.o"
 	@echo "... src/glad.i"
 	@echo "... src/glad.s"
-	@echo "... src/new.o"
-	@echo "... src/new.i"
-	@echo "... src/new.s"
 .PHONY : help
 
 

@@ -52,7 +52,6 @@ int main (){
 		glfwTerminate();
 		return -1;
 	}
-
 	
 	// starting a window
 	
@@ -71,7 +70,6 @@ int main (){
 	// callback for random resizing
 	glfwSetFramebufferSizeCallback(window, callback_size);
 
-
 	// creating the vertex shader 
 	unsigned int vertexShader;
 	vertexShader = glCreateShader(GL_VERTEX_SHADER);
@@ -88,7 +86,6 @@ int main (){
 		glGetShaderInfoLog(vertexShader, 512 , NULL, infoLog);
 		cout << "error : " << infoLog << endl;
 	}
-
 	// creating fragment shader
 	unsigned int fragmentShader;
 	fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
@@ -130,7 +127,7 @@ int main (){
 	// vertex data 
 	float vertices[] = {
 		0.0f,  0.5f, 0.0f,
-		-0.5f, -0.5f, 0.0f,
+		0.5f, -0.5f, 0.0f,
 		0.5f, -0.5f, 0.0f,
 	};
 	unsigned int indices[] = {  // note that we start from 0!
