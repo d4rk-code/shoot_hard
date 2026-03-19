@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/app.dir/link.d"
-  "CMakeFiles/app.dir/src/element.cpp.o"
-  "CMakeFiles/app.dir/src/element.cpp.o.d"
+  "CMakeFiles/app.dir/src/excercise_1.cpp.o"
+  "CMakeFiles/app.dir/src/excercise_1.cpp.o.d"
   "CMakeFiles/app.dir/src/glad.c.o"
   "CMakeFiles/app.dir/src/glad.c.o.d"
   "app"

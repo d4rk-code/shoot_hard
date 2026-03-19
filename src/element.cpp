@@ -89,6 +89,8 @@ int main(){
 
 	glBindVertexArray(0); 
 
+	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); // wireframe mode
+	
 	//render loop
 	while(!glfwWindowShouldClose(window)){
 		input(window);

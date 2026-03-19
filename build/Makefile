@@ -129,29 +129,29 @@ app/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/build
 .PHONY : app/fast
 
-src/element.o: src/element.cpp.o
-.PHONY : src/element.o
+src/excercise_1.o: src/excercise_1.cpp.o
+.PHONY : src/excercise_1.o
 
 # target to build an object file
-src/element.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/element.cpp.o
-.PHONY : src/element.cpp.o
+src/excercise_1.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/excercise_1.cpp.o
+.PHONY : src/excercise_1.cpp.o
 
-src/element.i: src/element.cpp.i
-.PHONY : src/element.i
+src/excercise_1.i: src/excercise_1.cpp.i
+.PHONY : src/excercise_1.i
 
 # target to preprocess a source file
-src/element.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/element.cpp.i
-.PHONY : src/element.cpp.i
+src/excercise_1.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/excercise_1.cpp.i
+.PHONY : src/excercise_1.cpp.i
 
-src/element.s: src/element.cpp.s
-.PHONY : src/element.s
+src/excercise_1.s: src/excercise_1.cpp.s
+.PHONY : src/excercise_1.s
 
 # target to generate assembly for a file
-src/element.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/element.cpp.s
-.PHONY : src/element.cpp.s
+src/excercise_1.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/excercise_1.cpp.s
+.PHONY : src/excercise_1.cpp.s
 
 src/glad.o: src/glad.c.o
 .PHONY : src/glad.o
@@ -186,9 +186,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... app"
-	@echo "... src/element.o"
-	@echo "... src/element.i"
-	@echo "... src/element.s"
+	@echo "... src/excercise_1.o"
+	@echo "... src/excercise_1.i"
+	@echo "... src/excercise_1.s"
 	@echo "... src/glad.o"
 	@echo "... src/glad.i"
 	@echo "... src/glad.s"
