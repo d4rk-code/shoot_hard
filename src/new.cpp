@@ -6,6 +6,7 @@ using namespace std;
 
 void resize_callback(GLFWwindow* window, int height, int width);
 void input(GLFWwindow* window);
+float changecolor(GLFWwindow* window,float color);
 
 const char *vertexShaderSource = "#version 330 core\n"
     "layout (location = 0) in vec3 aPos;\n"
@@ -15,9 +16,10 @@ const char *vertexShaderSource = "#version 330 core\n"
     "}\0";
 const char *fragmentShaderSource = "#version 330 core\n"
     "out vec4 FragColor;\n"
+    "uniform vec4 change;\n"
     "void main()\n"
     "{\n"
-    "   FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
+    "   FragColor = change;\n"
     "}\n\0";
 
 // create vertex and fragment shader sources , create shaders , create shader programs , create vbo vao , draw triangle
@@ -91,6 +93,14 @@ int main(){
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		glUseProgram(shaderprogram);
+
+		// doing some key bs 
+		float color = 1.0f;
+		int location = glGetUniformLocation(shaderprogram, "change");
+		
+		glUniform4f(location, 1.0f, changecolor(window, color), 0.0f, 1.0f);
+
+
 		glBindVertexArray(VAO);
 		glDrawArrays(GL_TRIANGLES,0,6);
 
@@ -113,4 +123,10 @@ void resize_callback(GLFWwindow* window, int height, int width){
 void input(GLFWwindow* window){
 	if (glfwGetKey(window,GLFW_KEY_ESCAPE) == GLFW_PRESS)
 		glfwSetWindowShouldClose(window, true);
+}
+
+float changecolor(GLFWwindow* window,float color){
+	if(glfwGetKey(window,GLFW_KEY_G) == GLFW_PRESS)
+		color = 0.5f;
+	return color;
 }
