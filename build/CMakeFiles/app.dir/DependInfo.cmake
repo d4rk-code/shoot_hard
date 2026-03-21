@@ -9,7 +9,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/junk/shoot_hard/src/glad.c" "CMakeFiles/app.dir/src/glad.c.o" "gcc" "CMakeFiles/app.dir/src/glad.c.o.d"
-  "/home/junk/shoot_hard/src/new.cpp" "CMakeFiles/app.dir/src/new.cpp.o" "gcc" "CMakeFiles/app.dir/src/new.cpp.o.d"
+  "/home/junk/shoot_hard/src/play.cpp" "CMakeFiles/app.dir/src/play.cpp.o" "gcc" "CMakeFiles/app.dir/src/play.cpp.o.d"
   "" "app" "gcc" "CMakeFiles/app.dir/link.d"
   )
 

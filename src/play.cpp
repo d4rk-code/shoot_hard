@@ -9,7 +9,6 @@ using namespace std;
 
 void resize_callback(GLFWwindow* window, int height, int width);
 void input(GLFWwindow* window);
-float changecolor(GLFWwindow* window,float color);
 
 
 int main(){
@@ -25,21 +24,17 @@ int main(){
 		return -1;
 	}
 
-	//calling our constructor for the function
-	
-	Shader example("shaders/vertex.shad", "shaders/fragment.shad");
+	//calling our shader constructor
+	Shader example("../shaders/vertex.shad", "../shaders/fragment.shad");
 
 	//vertex location data for the triangle (normalized coordinates)
-	GLfloat vertices[] = {
-		// first triangle
-		0.5f,  0.5f, 0.0f,  // top right
-		0.5f, -0.5f, 0.0f,  // bottom right
-		-0.5f,  0.5f, 0.0f,  // top left 
-				     // second triangle
-		0.5f, -0.5f, 0.0f,  // bottom right
-		-0.5f, -0.5f, 0.0f,  // bottom left
-		-0.5f,  0.5f, 0.0f
-	};
+
+	float vertices[] = {
+		 // positions         // colors
+		 0.5f, -0.5f, 0.0f,  1.0f, 0.0f, 0.0f,   // bottom right
+		-0.5f, -0.5f, 0.0f,  0.0f, 1.0f, 0.0f,   // bottom left
+		 0.0f,  0.5f, 0.0f,  0.0f, 0.0f, 1.0f    // top 
+	}; 
 
 	//creating vbo and vao
 	unsigned int VBO, VAO;
@@ -47,17 +42,24 @@ int main(){
 	glGenBuffers(1, &VBO);
 
 	glBindVertexArray(VAO);
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 
+	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+	// for positions 
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
+
+	// for colors
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3*sizeof(float)));
+	glEnableVertexAttribArray(1);
 
 	glBindBuffer(GL_ARRAY_BUFFER, 0); 
 
 	glBindVertexArray(0); 
 
+	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); // wireframe mode
+	
 	//render loop
 	while(!glfwWindowShouldClose(window)){
 		input(window);
@@ -66,15 +68,9 @@ int main(){
 
 		example.use();
 
-		// doing some key bs 
-		float color = 1.0f;
-		int location = glGetUniformLocation(shaderprogram, "change");
-		
-		glUniform4f(location, 1.0f, changecolor(window, color), 0.0f, 1.0f);
-
-
 		glBindVertexArray(VAO);
-		glDrawArrays(GL_TRIANGLES,0,6);
+
+		glDrawArrays(GL_TRIANGLES,0,3);
 
 		glfwSwapBuffers(window);
 		glfwPollEvents();
@@ -87,17 +83,11 @@ int main(){
 	return 0;
 }
 
-void resize_callback(GLFWwindow* window, int height, int width){
-	glViewport(0,0,height,width);
+void resize_callback(GLFWwindow* window, int width, int height){
+	glViewport(0,0,width,height);
 }
 
 void input(GLFWwindow* window){
 	if (glfwGetKey(window,GLFW_KEY_ESCAPE) == GLFW_PRESS)
 		glfwSetWindowShouldClose(window, true);
-}
-
-float changecolor(GLFWwindow* window,float color){
-	if(glfwGetKey(window,GLFW_KEY_G) == GLFW_PRESS)
-		color = 0.5f;
-	return color;
 }
