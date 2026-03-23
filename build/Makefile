@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/junk/shoot_hard
+CMAKE_SOURCE_DIR = /home/junk/projects/shoot_hard
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/junk/shoot_hard/build
+CMAKE_BINARY_DIR = /home/junk/projects/shoot_hard/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/junk/shoot_hard/build/CMakeFiles /home/junk/shoot_hard/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/junk/projects/shoot_hard/build/CMakeFiles /home/junk/projects/shoot_hard/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/junk/shoot_hard/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/junk/projects/shoot_hard/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -153,29 +153,29 @@ src/glad.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/glad.c.s
 .PHONY : src/glad.c.s
 
-src/play.o: src/play.cpp.o
-.PHONY : src/play.o
+src/texture1.o: src/texture1.cpp.o
+.PHONY : src/texture1.o
 
 # target to build an object file
-src/play.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/play.cpp.o
-.PHONY : src/play.cpp.o
+src/texture1.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/texture1.cpp.o
+.PHONY : src/texture1.cpp.o
 
-src/play.i: src/play.cpp.i
-.PHONY : src/play.i
+src/texture1.i: src/texture1.cpp.i
+.PHONY : src/texture1.i
 
 # target to preprocess a source file
-src/play.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/play.cpp.i
-.PHONY : src/play.cpp.i
+src/texture1.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/texture1.cpp.i
+.PHONY : src/texture1.cpp.i
 
-src/play.s: src/play.cpp.s
-.PHONY : src/play.s
+src/texture1.s: src/texture1.cpp.s
+.PHONY : src/texture1.s
 
 # target to generate assembly for a file
-src/play.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/play.cpp.s
-.PHONY : src/play.cpp.s
+src/texture1.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/texture1.cpp.s
+.PHONY : src/texture1.cpp.s
 
 # Help Target
 help:
@@ -189,9 +189,9 @@ help:
 	@echo "... src/glad.o"
 	@echo "... src/glad.i"
 	@echo "... src/glad.s"
-	@echo "... src/play.o"
-	@echo "... src/play.i"
-	@echo "... src/play.s"
+	@echo "... src/texture1.o"
+	@echo "... src/texture1.i"
+	@echo "... src/texture1.s"
 .PHONY : help
 
 

@@ -1,8 +1,5 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-
-#include <shader/shaderClass.h>
-
 #include <iostream>
 
 using namespace std;
@@ -11,6 +8,21 @@ void resize_callback(GLFWwindow* window, int height, int width);
 void input(GLFWwindow* window);
 float changecolor(GLFWwindow* window,float color);
 
+const char *vertexShaderSource = "#version 330 core\n"
+    "layout (location = 0) in vec3 aPos;\n"
+    "void main()\n"
+    "{\n"
+    "   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
+    "}\0";
+const char *fragmentShaderSource = "#version 330 core\n"
+    "out vec4 FragColor;\n"
+    "uniform vec4 change;\n"
+    "void main()\n"
+    "{\n"
+    "   FragColor = change;\n"
+    "}\n\0";
+
+// create vertex and fragment shader sources , create shaders , create shader programs , create vbo vao , draw triangle
 
 int main(){
 	glfwInit();
@@ -25,18 +37,34 @@ int main(){
 		return -1;
 	}
 
-	//calling our constructor for the function
-	
-	Shader example("shaders/vertex.shad", "shaders/fragment.shad");
+	//creating a vertex shader and sourcing n compiling it
+	GLuint vertexshader = glCreateShader(GL_VERTEX_SHADER);
+	glShaderSource(vertexshader,1, &vertexShaderSource, NULL);
+	glCompileShader(vertexshader);
+
+	//doing the same for fragment shader
+	GLuint fragmentshader = glCreateShader(GL_FRAGMENT_SHADER);
+	glShaderSource(fragmentshader,1 , &fragmentShaderSource,NULL);
+	glCompileShader(fragmentshader);
+
+	//creating a shader program
+	GLuint shaderprogram = glCreateProgram();
+	glAttachShader(shaderprogram, vertexshader);
+	glAttachShader(shaderprogram, fragmentshader);
+	glLinkProgram(shaderprogram);
+
+	//deleting shaders after using them
+	glDeleteShader(vertexshader);
+	glDeleteShader(fragmentshader);
 
 	//vertex location data for the triangle (normalized coordinates)
 	GLfloat vertices[] = {
 		// first triangle
-		0.5f,  0.5f, 0.0f,  // top right
-		0.5f, -0.5f, 0.0f,  // bottom right
+		 0.5f,  0.5f, 0.0f,  // top right
+		 0.5f, -0.5f, 0.0f,  // bottom right
 		-0.5f,  0.5f, 0.0f,  // top left 
 				     // second triangle
-		0.5f, -0.5f, 0.0f,  // bottom right
+		 0.5f, -0.5f, 0.0f,  // bottom right
 		-0.5f, -0.5f, 0.0f,  // bottom left
 		-0.5f,  0.5f, 0.0f
 	};
@@ -64,7 +92,7 @@ int main(){
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		example.use();
+		glUseProgram(shaderprogram);
 
 		// doing some key bs 
 		float color = 1.0f;
@@ -82,6 +110,7 @@ int main(){
 
 	glDeleteVertexArrays(1, &VAO);
 	glDeleteBuffers(1, &VBO);
+	glDeleteProgram(shaderprogram);
 
 	glfwTerminate();
 	return 0;

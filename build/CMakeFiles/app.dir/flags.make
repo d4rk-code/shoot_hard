@@ -5,13 +5,13 @@
 # compile CXX with /usr/bin/c++
 C_DEFINES = 
 
-C_INCLUDES = -I/home/junk/shoot_hard/include
+C_INCLUDES = -I/home/junk/projects/shoot_hard/include
 
 C_FLAGS = 
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/junk/shoot_hard/include
+CXX_INCLUDES = -I/home/junk/projects/shoot_hard/include
 
 CXX_FLAGS = -std=gnu++17
 

@@ -1,6 +1,7 @@
-CMakeFiles/app.dir/src/play.cpp.o: /home/junk/shoot_hard/src/play.cpp \
- /usr/include/stdc-predef.h /home/junk/shoot_hard/include/glad/glad.h \
- /home/junk/shoot_hard/include/KHR/khrplatform.h \
+CMakeFiles/app.dir/src/play.cpp.o: \
+ /home/junk/projects/shoot_hard/src/play.cpp /usr/include/stdc-predef.h \
+ /home/junk/projects/shoot_hard/include/glad/glad.h \
+ /home/junk/projects/shoot_hard/include/KHR/khrplatform.h \
  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdint.h \
  /usr/include/stdint.h /usr/include/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/features-time64.h \
@@ -12,7 +13,7 @@ CMakeFiles/app.dir/src/play.cpp.o: /home/junk/shoot_hard/src/play.cpp \
  /usr/include/bits/stdint-intn.h /usr/include/bits/stdint-uintn.h \
  /usr/include/bits/stdint-least.h /usr/include/GLFW/glfw3.h \
  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stddef.h \
- /home/junk/shoot_hard/include/shader/shaderClass.h \
+ /home/junk/projects/shoot_hard/include/shader/shaderClass.h \
  /usr/include/c++/15.2.1/string \
  /usr/include/c++/15.2.1/bits/requires_hosted.h \
  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++config.h \

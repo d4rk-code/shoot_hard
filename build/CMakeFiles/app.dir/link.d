@@ -2,7 +2,7 @@ app: \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/Scrt1.o \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crti.o \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o \
-  CMakeFiles/app.dir/src/play.cpp.o \
+  CMakeFiles/app.dir/src/texture1.cpp.o \
   CMakeFiles/app.dir/src/glad.c.o \
   /usr/lib/libglfw.so.3.4 \
   /usr/lib/libGLX.so \
@@ -46,7 +46,7 @@ app: \
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o:
 
-CMakeFiles/app.dir/src/play.cpp.o:
+CMakeFiles/app.dir/src/texture1.cpp.o:
 
 CMakeFiles/app.dir/src/glad.c.o:
 
