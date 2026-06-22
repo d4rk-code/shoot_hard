@@ -72,19 +72,19 @@ include CMakeFiles/app.dir/flags.make
 CMakeFiles/app.dir/codegen:
 .PHONY : CMakeFiles/app.dir/codegen
 
-CMakeFiles/app.dir/src/texture1.cpp.o: CMakeFiles/app.dir/flags.make
-CMakeFiles/app.dir/src/texture1.cpp.o: /home/junk/projects/shoot_hard/src/texture1.cpp
-CMakeFiles/app.dir/src/texture1.cpp.o: CMakeFiles/app.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/junk/projects/shoot_hard/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/app.dir/src/texture1.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/app.dir/src/texture1.cpp.o -MF CMakeFiles/app.dir/src/texture1.cpp.o.d -o CMakeFiles/app.dir/src/texture1.cpp.o -c /home/junk/projects/shoot_hard/src/texture1.cpp
+CMakeFiles/app.dir/src/move.cpp.o: CMakeFiles/app.dir/flags.make
+CMakeFiles/app.dir/src/move.cpp.o: /home/junk/projects/shoot_hard/src/move.cpp
+CMakeFiles/app.dir/src/move.cpp.o: CMakeFiles/app.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/junk/projects/shoot_hard/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/app.dir/src/move.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/app.dir/src/move.cpp.o -MF CMakeFiles/app.dir/src/move.cpp.o.d -o CMakeFiles/app.dir/src/move.cpp.o -c /home/junk/projects/shoot_hard/src/move.cpp
 
-CMakeFiles/app.dir/src/texture1.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/app.dir/src/texture1.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/junk/projects/shoot_hard/src/texture1.cpp > CMakeFiles/app.dir/src/texture1.cpp.i
+CMakeFiles/app.dir/src/move.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/app.dir/src/move.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/junk/projects/shoot_hard/src/move.cpp > CMakeFiles/app.dir/src/move.cpp.i
 
-CMakeFiles/app.dir/src/texture1.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/app.dir/src/texture1.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/junk/projects/shoot_hard/src/texture1.cpp -o CMakeFiles/app.dir/src/texture1.cpp.s
+CMakeFiles/app.dir/src/move.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/app.dir/src/move.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/junk/projects/shoot_hard/src/move.cpp -o CMakeFiles/app.dir/src/move.cpp.s
 
 CMakeFiles/app.dir/src/glad.c.o: CMakeFiles/app.dir/flags.make
 CMakeFiles/app.dir/src/glad.c.o: /home/junk/projects/shoot_hard/src/glad.c
@@ -102,13 +102,13 @@ CMakeFiles/app.dir/src/glad.c.s: cmake_force
 
 # Object files for target app
 app_OBJECTS = \
-"CMakeFiles/app.dir/src/texture1.cpp.o" \
+"CMakeFiles/app.dir/src/move.cpp.o" \
 "CMakeFiles/app.dir/src/glad.c.o"
 
 # External object files for target app
 app_EXTERNAL_OBJECTS =
 
-app: CMakeFiles/app.dir/src/texture1.cpp.o
+app: CMakeFiles/app.dir/src/move.cpp.o
 app: CMakeFiles/app.dir/src/glad.c.o
 app: CMakeFiles/app.dir/build.make
 app: CMakeFiles/app.dir/compiler_depend.ts

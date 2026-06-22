@@ -153,29 +153,29 @@ src/glad.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/glad.c.s
 .PHONY : src/glad.c.s
 
-src/texture1.o: src/texture1.cpp.o
-.PHONY : src/texture1.o
+src/move.o: src/move.cpp.o
+.PHONY : src/move.o
 
 # target to build an object file
-src/texture1.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/texture1.cpp.o
-.PHONY : src/texture1.cpp.o
+src/move.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/move.cpp.o
+.PHONY : src/move.cpp.o
 
-src/texture1.i: src/texture1.cpp.i
-.PHONY : src/texture1.i
+src/move.i: src/move.cpp.i
+.PHONY : src/move.i
 
 # target to preprocess a source file
-src/texture1.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/texture1.cpp.i
-.PHONY : src/texture1.cpp.i
+src/move.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/move.cpp.i
+.PHONY : src/move.cpp.i
 
-src/texture1.s: src/texture1.cpp.s
-.PHONY : src/texture1.s
+src/move.s: src/move.cpp.s
+.PHONY : src/move.s
 
 # target to generate assembly for a file
-src/texture1.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/texture1.cpp.s
-.PHONY : src/texture1.cpp.s
+src/move.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/move.cpp.s
+.PHONY : src/move.cpp.s
 
 # Help Target
 help:
@@ -189,9 +189,9 @@ help:
 	@echo "... src/glad.o"
 	@echo "... src/glad.i"
 	@echo "... src/glad.s"
-	@echo "... src/texture1.o"
-	@echo "... src/texture1.i"
-	@echo "... src/texture1.s"
+	@echo "... src/move.o"
+	@echo "... src/move.i"
+	@echo "... src/move.s"
 .PHONY : help
 
 

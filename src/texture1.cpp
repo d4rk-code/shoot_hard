@@ -10,7 +10,6 @@
 
 using namespace std;
 
-
 int main(){
 	glfwInit();
 
@@ -26,15 +25,15 @@ int main(){
 	Shader myShad("../shaders/vertex.shad","../shaders/fragment.shad");
 
 	float vertices[] = {
-		 // positions          // colors           // texture coords
-		 0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f, // top right
-		 0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f, // bottom right
+		// positions          // colors           // texture coords
+		0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f, // top right
+		0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f, // bottom right
 		-0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f, // bottom left
 		-0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 1.0f,  // top left
-		 0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f, // top right
+		0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f, // top right
 		-0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f // bottom left
 	};
-	
+
 	//creating vbo and vao
 	unsigned int VBO, VAO;
 	glGenVertexArrays(1, &VAO);
@@ -52,7 +51,7 @@ int main(){
 	// for colors
 	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
 	glEnableVertexAttribArray(1);
-	
+
 	// for textures
 	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
 	glEnableVertexAttribArray(2);
@@ -62,7 +61,7 @@ int main(){
 	glBindVertexArray(0); 
 
 	// working on the textures
-	
+
 	unsigned int texture;
 	glGenTextures(1, &texture);
 	glBindTexture(GL_TEXTURE_2D, texture); // created and bound the texture
@@ -77,8 +76,7 @@ int main(){
 
 	// load image, create texture & mipmap for the textures
 	int width, height, nrChannel;
-	unsigned char* data = stbi_load("../images/mono.jpg", &width, &height, &nrChannel, 0);
-
+	unsigned char* data = stbi_load("../images/mono.jpg", &width, &height, &nrChannel, 0); // add flags later
 	if (data){
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
 		glGenerateMipmap(GL_TEXTURE_2D);
@@ -107,6 +105,7 @@ int main(){
 		glfwPollEvents();
 	}
 
+	// deleting the buffers after using them
 	glDeleteVertexArrays(1, &VAO);
 	glDeleteBuffers(1, &VBO);
 
